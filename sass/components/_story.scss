@@ -1,0 +1,75 @@
+.story{
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($black-color, .2);
+    border-radius: $border;
+    background-color: rgba($white-color, .6);
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-fs;
+    transform: skewX(-12deg);
+    position: relative;
+
+    @include respond(tab-port){
+        width: 90%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone){
+        transform: skewX(0);
+    }
+
+    &__text{
+        transform: skewX(12deg);
+        @include respond(phone){
+            transform: skewX(0);
+        }
+    }
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        overflow: hidden;
+        transform: translateX(-2rem) skewX(12deg);
+        border-radius: 50%;
+        @include respond(phone){
+            transform: translate(0) skewX(0);
+        }
+        @supports(-webkit-clip-path: polygon(0 0)) or (clip-path: polygon(0 0)){
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            -moz-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: none;
+        }
+    }
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $white-color;
+        text-align: center;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+    &__img{
+        transition: all .5s;
+        background-size: cover;
+        height: 100%;
+        transform: translateX(-3.5rem) scale(1.2);
+    }
+    &:hover &__caption{
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    &:hover &__img{
+        transform: translateX(-3.5rem) scale(1);
+        filter: blur(.3rem) brightness(80%);
+    }
+}

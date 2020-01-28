@@ -1,0 +1,85 @@
+.btn{
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s; 
+        position: relative;
+        font-size: $default-fs;
+
+        //Changes for button element
+        border: none;
+        cursor: pointer;
+    }
+    &:hover{
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($black-color, .2);
+        &::after{
+            transform: scaleX(1.4) scaleY(2);
+            opacity: 0;
+        }
+    }
+    &:active,
+    :focus{
+        outline: none;
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($black-color, .2);
+    }
+    &--white {
+        background-color: $white-color;
+        color: $grey-color;
+        &::after {
+            background-color: $white-color;
+        }
+    }
+    &--green {
+        background-color: $primary-color;
+        color: $white-color;
+        &::after {
+            background-color: $primary-color;
+        }
+    }
+    &::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        transition: all .4s;
+    }
+    &--animated{
+        animation: moveInBottom 1s ease-out .5s;
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text{
+    &:link,
+    &:visited{
+        font-size: $default-fs;
+        font-weight: 700;
+        color: $primary-color;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $primary-color;
+        padding: .3rem;
+    }
+    &:hover{
+        background-color: $primary-color;
+        color: $white-color;
+        box-shadow: 0 1rem 2rem rgba($black-color, .2);
+        transform: translateY(-.3rem);
+    }
+    &:active{
+        box-shadow: 0 .5rem 1rem rgba($black-color, .2);
+        transform: translateY(0);
+    }
+}
